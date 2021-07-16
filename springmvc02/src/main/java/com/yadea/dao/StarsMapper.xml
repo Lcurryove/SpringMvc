@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yadea.dao.StarsMapper">
+
+    <insert id="AddStar" parameterType="Stars">
+        insert into stars(RankId,name,age,advantage)
+        values(#{RankId},#{name},#{age},#{advantage})
+    </insert>
+
+    <delete id="DeleteStarByName" parameterType="String">
+        delete from stars where name=#{starname}
+    </delete>
+
+    <update id="UpdateStar" parameterType="Stars">
+        update stars
+        set  RankId=#{RankId},age=#{age},advantage=#{advantage}
+        where name=#{name};
+    </update>
+
+    <select id="QueryStarByName" resultType="Stars">
+        select * from stars where name=#{starname}
+    </select>
+
+    <select id="QueryAllStars" resultType="Stars" >
+        select * from stars
+    </select>
+
+</mapper>
